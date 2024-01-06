@@ -1,0 +1,14 @@
+
+services:
+    php74cli:
+        build: ./
+        container_name: applic-php74cli-bullseye
+        restart: always
+        ports:
+            - 8000:8000
+        volumes:
+            - ./:/var/www/html
+        tty: true
+        # php -S php74cli:8000 -t public
+        # php artisan serve --host php74cli
+        # php yii serve php74cli:8000

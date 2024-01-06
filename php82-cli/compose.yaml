@@ -1,0 +1,13 @@
+
+services:
+    php82cli:
+        build: ./
+        container_name: applic-php82cli-bookworm
+        restart: always
+        ports:
+            - 8000:8000
+        volumes:
+            - ./:/var/www/html
+        tty: true
+        # php -S php82cli:8000 -t public
+        # php artisan serve --host php82cli
