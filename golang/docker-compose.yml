@@ -1,0 +1,11 @@
+
+services:
+  golang:
+    build: ./
+    container_name: app-golang122-bookworm
+    restart: always
+    ports:
+      - 8080:5050
+    volumes:
+      - ./:/var/www/applic
+    tty: true

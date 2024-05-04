@@ -1,0 +1,44 @@
+
+services:
+    php74cli:
+        build: ./
+        container_name: laravel-php74cli-bullseye
+        restart: always
+        ports:
+            - 8080:8000
+        links:
+            - database
+        volumes:
+            - ./:/var/www/html
+        tty: true
+        # php -S php74cli:8000 -t public
+        # php artisan serve --host php74cli
+    database:
+        image: mariadb:10.6-focal
+        container_name: mariadb-focal
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root_pass
+            MYSQL_DATABASE: laravel
+            MYSQL_USER: phpmyadmin
+            MYSQL_PASSWORD: phpmyadmin
+    phpmyadmin:
+        image: phpmyadmin:5.0-apache
+        container_name: phpmyadmin-buster
+        restart: always
+        links:
+            - database
+        ports:
+            - 8082:80    
+        environment:
+            PMA_HOST: database
+            PMA_USER: phpmyadmin
+            PMA_PASSWORD: phpmyadmin
+    # mailpit:
+    #     image: axllent/mailpit
+    #     container_name: mailpit
+    #     restart: always
+    #     ports:
+    #         - 1025:1025 # smtp server
+    #         - 8025:8025 # web ui
+        

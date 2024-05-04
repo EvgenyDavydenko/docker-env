@@ -1,0 +1,11 @@
+
+services:
+    gcc132:
+        image: "gcc:13.2.0-bookworm"
+        container_name: gcc132-bookworm
+        restart: always
+        volumes:
+            - ./:/usr/src/myapp
+        working_dir: /usr/src/myapp
+        tty: true
+        # gcc -o myapp main.c

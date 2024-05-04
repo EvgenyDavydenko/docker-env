@@ -1,0 +1,14 @@
+
+services:
+    python310:
+        build: ./
+        container_name: flask-python310-bookworm
+        restart: always
+        ports:
+            - 8080:5000
+        volumes:
+            - ./:/var/www/applic
+        tty: true
+        # flask run --host python310 --port 5000 --debug
+        # flask --app hello run --host python310 --port 5000 --debug
+
